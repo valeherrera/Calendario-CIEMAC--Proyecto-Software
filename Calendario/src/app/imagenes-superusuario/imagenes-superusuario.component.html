@@ -1,0 +1,185 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+  crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body style="background-color: #2C8870;">
+
+  <header>
+    <div class="contenedor">
+      <h2><a>Calendario Matemático CIEMAC</a></h2>
+      <label class="fas fa-sign-out-alt" style="cursor: pointer" (click)="Salir()"></label>
+      <img src="{{fotoUsuario}}" style="width:2.5%; margin-top: 0.8%; margin-left: 57%;" class="w3-circle">
+      <label class="fas fa-info" routerLink='/Informacion' style="cursor: pointer"></label>
+    </div>
+  </header>
+
+  <main>
+    <section id="banner">
+      <div class="contenedor">
+        <div>
+          <br><br>
+          <div>
+            <h3>Imagenes</h3>
+            <button type="button" class="btn btn-danger btn-circle btn-xl" data-toggle="modal" data-target="#modalAgregar"><i
+                class="fas fa-plus"></i></button>
+          </div>
+
+          <br><br><br><br><br>
+          <!--Muestra la información de las imágenes-->
+          <div class="album py-5 bg-light" style="width: 500px;">
+            <div class="container">
+              <div class="row">
+                <div *ngFor="let imagen of listaImagenes; let indice=index" class="col-md-4">
+                  <br><br>
+                  <div class="card mb-4 box-shadow contenedor-ejercicios">
+                    <br>
+                    <p> {{indice +1}} : {{imagen.nombre}}</p>
+                    <br><br>
+                    <div style="float: left; width: 98%; height: 40%; ">
+                      <div class="contenedor-imagen">
+                        <img src="{{imagen.imagen}}" data-holder-rendered="true">
+                      </div>
+                    </div>
+                    <div style="margin-top: 60%;">
+                      <br><br>
+                      <p>Descripción: {{imagen.descripcion}}</p>
+                      <br><br>
+                      <p>Autor: {{imagen.autor}}</p>
+                      <br><br>
+                      <p>Fecha incio: {{imagen.fechaInicio}}</p>
+                      <br><br>
+                      <p>Fecha final: {{imagen.fechaFinal}}</p>
+                      <br><br>
+                      <i class="fas fa-pencil-alt iconos" (click)="InformacionImagen(imagen.fechaInicio, imagen.fechaFinal, imagen.autor, imagen.descripcion, imagen.nombre, imagen.imagen, indice)"
+                        data-toggle="modal" data-target="#modalEditar"></i>
+                      <i class="far fa-trash-alt iconos" (click)="GuardarInformacion(indice)" data-toggle="modal"
+                        data-target="#modalEliminar"></i>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br><br>
+
+          <!-- Modificar información de una imagen-->
+          <div class="container">
+            <div class="modal fade" id="modalEditar" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Editar información:</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Nombre: </p>
+                    <br><br>
+                    <input type="text" placeholder="Ingrese el nombre" class="form-control casillaDatos" [(ngModel)]="idNombreNuevo">
+                    <br>
+                    <p>Autor: </p>
+                    <br><br>
+                    <input type="text" placeholder="Ingrese el nombre" class="form-control casillaDatos" [(ngModel)]="idNombreAutorNuevo">
+                    <br>
+                    <p>Descripción: </p>
+                    <br><br>
+                    <input type="text" placeholder="Ingrese el nombre" class="form-control casillaDatos" [(ngModel)]="idDescripcionNueva">
+                    <br>
+                    <p>Fecha inicio: </p>
+                    <br>
+                    <input id="fechaInicio" name="fechaInicio" [(ngModel)]="fechaInicioNueva" type="date" class="form-control casillaDatos">
+                    <br>
+                    <p>Fecha final: </p>
+                    <br>
+                    <input id="fechaFinal" name="fechaFinal" [(ngModel)]="fechaFinalNueva" type="date" class="form-control casillaDatos">
+                    <br><br>
+                    <p>Imagen </p>
+                    <br>
+                    <i class="fas fa-upload iconos" style="float: right; margin-right:8%;"></i>
+                    <input type="file" accept=".png, .jpg" (change)="subirImagen($event)" class="casillaDatos">
+                    <p>{{nombreImagenArte}}</p>
+                    <input #urlImagenNueva type="hidden" [value]="urlImagenA | async">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" (click)="EditarInformacion(idNombreNuevo, idNombreAutorNuevo, idDescripcionNueva, fechaInicioNueva, fechaFinalNueva)"
+                      data-dismiss="modal" class="btn estilo-boton">Editar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agregar una imagen -->
+          <div class="container">
+            <div class="modal fade" id="modalAgregar" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Agregar imagen:</h4>
+                  </div>
+                  <div class="modal-body">
+
+                    <p>Nombre: </p>
+                    <br><br>
+                    <input type="text" placeholder="Ingrese el nombre" class="form-control casillaDatos" [(ngModel)]="idNombre">
+                    <br>
+                    <p>Autor: </p>
+                    <br><br>
+                    <input type="text" placeholder="Ingrese el nombre" class="form-control casillaDatos" [(ngModel)]="idNombreAutor">
+                    <br>
+                    <p>Descripción: </p>
+                    <br><br>
+                    <input type="text" placeholder="Ingrese el nombre" class="form-control casillaDatos" [(ngModel)]="idDescripcion">
+                    <br>
+                    <p>Fecha inicio: </p>
+                    <br>
+                    <input id="fechaInicio" name="fechaInicio" [(ngModel)]="fechaInicio" type="date" class="form-control casillaDatos">
+                    <br>
+                    <p>Fecha final: </p>
+                    <br>
+                    <input id="fechaFinal" name="fechaFinal" [(ngModel)]="fechaFinal" type="date" class="form-control casillaDatos">
+                    <br><br>
+                    <p>Imagen </p>
+                    <br>
+                    <i class="fas fa-upload iconos" style="float: right; margin-right:8%;"></i>
+                    <input type="file" accept=".png, .jpg" (change)="subirImagen($event)" class="casillaDatos">
+                    <p>{{nombreImagenArte}}</p>
+                    <input #urlImagen type="hidden" [value]="urlImagenA | async">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" (click)="AgregarImagen(idNombre, idNombreAutor, idDescripcion, fechaInicio, fechaFinal)"
+                      data-dismiss="modal" class="btn estilo-boton">Agregar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Muestra el modal de si está seguro que desea eliminar la imagen-->
+          <div class="modal" id="modalEliminar" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Eliminar informacion</h5>
+                </div>
+                <div class="modal-body">
+                  <br>
+                  <p style="color: #2C8870;"> ¿Esta seguro que desea eliminar la imagen?</p>
+                  <br>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="EliminarImagen()">Si</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+  </main>
+</body>

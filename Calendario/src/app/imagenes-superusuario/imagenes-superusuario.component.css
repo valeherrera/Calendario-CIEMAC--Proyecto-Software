@@ -1,0 +1,174 @@
+#banner{
+    margin-top: 0px;
+}
+
+#banner img{
+margin-top: 0px;
+width: 100%;
+height: 100%;
+
+}
+
+#banner .contenedor{
+    background-color: transparent; 
+    width: 95%;
+    height: 450px;
+    position: absolute;
+    left: 5%;
+    color: white;
+}
+
+#banner .contenedor-datos{
+    background-color:grey;
+    width: 400px;
+    height: 350px;
+    position: absolute;
+    color: white;
+    margin-left: 20px;
+}
+
+
+#banner .contenedor-titulo{
+    
+    width: 100%;
+    position: absolute;
+    margin-left: 33%;
+    color: white;
+    
+}
+
+.contenedor{
+    width: 100%;
+    margin: auto;
+}
+
+header{
+    width: 100%;
+    height: 50px;
+    background: #2C8870;
+    color: white;
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 100;
+
+}
+
+.contenedor-imagen{
+    
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 15px;
+    
+}
+
+.contenedor-ejercicios{
+    background-color:#E4EAE9;
+    width: 370px; 
+    height: 550px; 
+    padding: 10px;
+    position:relative;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+
+header .contenedor{
+    display: table;
+}
+
+header label{
+    float: right;
+    font-size: 28px;
+    margin-top:1%; 
+    margin-right: 2%;
+}
+
+section{
+    width: 100%;    
+}
+
+.estilo-boton{    
+    background-color: #2C8870;
+    border-radius: 0px;
+    border-color: #2C8870; 
+    margin:15px;
+    margin-top: 0%;
+    font-size: 17px;
+    padding: 5px 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+p{
+    float: left;
+    margin-left: 3%;    
+    color:#2C8870;
+}
+
+h2{
+    float: left;
+    margin-left: 1%;
+    margin-top: 1%;
+    color:white;   
+}
+
+h3{
+    margin-top: 3%; 
+    float: left; 
+    color:#2C8870;
+    
+}
+
+.btn-circle.btn-xl {
+    width: 50px;
+    height: 50px;
+    border-radius: 35px;
+    font-size: 14px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn-circle {
+    width: 27px;
+    height: 27px;
+    
+    text-align: center;
+    font-size: 10px; 
+    margin-top: 3%; 
+    margin-right: 11%; 
+    float: right; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+a{
+    color:white;
+}
+
+
+
+.iconos{
+    font-size: 100px;
+    margin-left:40px;
+    cursor: pointer;
+    font-size: 20px;  
+    color: #2C8870; 
+    
+}
+
+.casillaDatos{
+    width: 90%; 
+    margin-left: 3%;
+}
+
+.casillaDatosImagen{
+    width: 80%; 
+    margin-left: 3%;
+    
+}
+.modal-header{
+    background-color: #2C8870;
+}

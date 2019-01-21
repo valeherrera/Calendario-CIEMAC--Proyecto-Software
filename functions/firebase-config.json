@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "calendariomatematico-e29a5",
+  "private_key_id": "4a4895a2ea853e5eb19b0d139a96251329ac94dc",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC8vnplOU3amB8X\nwAQyD3wir9c4yrJAFfQ907XQoILMhUcuCEDiEtnWrZU5r262a5a0XAQQxBtbLq/I\njWhhCietzBkmJG49udUkKfX3Wmw1bzyc9Fyy9MJm5LsjsqSF9XuHqJcaGKsZ9GpG\nIAuauT0nnKwpiTDplw2zzY5NAdGR58FUXk+CbE1EiIMu2N0aaXeFrTp7ilybNYu1\ngzuYXaZzsRAWeKonrrjR772/wevlMOmIh2tiSzXNgVkWkPrRT3U+9xh+gKDZyEyr\nOC604RkiTfIYT0wTOhWie1psVNrL6p04Zj0m/AfEpdNTIAG2P26fVCa0Gkh0NNoa\nwkzfwff1AgMBAAECggEAQytabYmeLkvyzMX1+EbQe5uucTSZiPsHJ7WfP7bPta88\nrKIdTRc+VQsDTzsioGLbiCYzADB6N9H+ltXULqypgE1hKdTPMsJemvcf5L5WQhHr\nNUQ1dS5rvKhr/QFHUbESHC4gUBY1VhBIfdpLpu2DWQSFtGZxdL/gDXv6x2b9SPnf\nreyRxldxTjL2NHtG1mu9zksw//GPGf6rFcE09hjXASF/kxGiEUqJkGOLuQvGEBlk\nh+sCFYUJx3tsVUgldK/cLtzA3XyhhGCPWAffWAYxO4EFeaQ8r2RT1YkVF23XL18V\nNdZrSgnA5UhIxa4JtKHYuVpu2ywsv04CPU0PL5JJRQKBgQDhsXtemjF1l/0GyeD6\nSgeeOJcO1IOXKz7zaTEmdiuOHzAZLx8vUOxLP/q1gIVxNxd9XUz8ge2/Yn+RtT+n\nu4P6+7MX3M3cpYKMe/QclWaNEw+XgwMPhvSnmC04TYSFYcz5PJPbA6QoiNqeKQnj\nZKJMrZzlTewXtujEIKjjfm8t0wKBgQDWFtC5RPG2Gfm9AcgBAIox95pxS6dXxzSQ\n8HqTw4Fi+uu2TVElt/bf0rofCcxYIMvpe1PJzycmCzyR4owYMC2pc+9pRBZJ1Fa+\nvYFY6QIq1bxqsGmSkrxxejLLoe/zGPniaB4x+BXRQqbokn61D0+aaCMmbHsA2wjf\nPurVeo1+FwKBgQDcjiIe8BZ3caFeefi2/5N0Rp8wafNyzltFaj4S9RZZXBcX9VnH\nVpCkdRCfQMqnOgxlgcETXjGlfy9liDd9xh0TL9fz8N7oyoHKofOL32CJauAo02ox\nSVRbV7aROAfShSHXSyC+vk81IZBrUXWNV7HXty4FVGHtRt0vlS8Wql8h6wKBgCIO\n+yGeQD3SIBLbh6/xIAsW8vD3MiYawNgWCcocHida98jGwBQaEiJFaeqqKmISxZ3d\nStUeKYI542bp/ZOThpAgq4O5mzofl7U8fKliWD/sRM9MRV9WDLiY0h/nIT8xR/+m\nxLb6Wq4xxk/VjmbLisRrsLvaIi9eqSiq370ahAv9AoGBANqtSvQ4qbTe3Va3VND6\nqbOOu/wYcKGCWD51Qf6KJF4CTleHmpczUO5qDhhbEEz5pb6SlncthyEottra5wUo\nV8JSQIkYRIYufFYnmQPulaxv6/FEx1mPDC5Z5xNhVhBsYugfYIyfRC1VPp6ikZhN\nBYxQ8QgKyhmB6MUTE75RbNfU\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-az259@calendariomatematico-e29a5.iam.gserviceaccount.com",
+  "client_id": "103380782844159674782",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-az259%40calendariomatematico-e29a5.iam.gserviceaccount.com"
+}

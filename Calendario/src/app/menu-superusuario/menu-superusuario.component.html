@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">  
+<body style="background-color: #2C8870;">
+    <header>
+        <div class="contenedor">
+            <h2><a>Calendario Matemático CIEMAC</a></h2>
+            <label class="fas fa-sign-out-alt" (click)="Salir()" style="cursor: pointer"></label>
+            <img src="{{fotoUsuario}}" style="width:2.5%; margin-top: 0.8%; margin-left: 57%;" class="w3-circle" >
+            <label class="fas fa-info" routerLink='/Informacion' style="cursor: pointer"></label>
+            
+        </div>
+    </header>
+    <main>
+        <section id="banner">
+            <img class="imagen-fondo" src="../assets/imagenes/fondo.jpg">
+            <div class="contenedor">
+                <div routerLink='/ProfesoresSuperusuario' style="float:left;">
+                    <i class="far fa-user" ></i>
+                    <h3>PROFESORES</h3>
+                </div>
+                <div  style="float:right;" >
+                    <i class="far fa-images" routerLink='/ImagenesSuperusuario'></i>
+                    <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IMÁGENES</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

@@ -1,0 +1,154 @@
+#banner{
+    margin-top: 0px;
+}
+
+.fondo{
+    background-color: #2C8870;
+}
+#banner img{
+margin-top: 50px;
+width: 100%;
+height: 100%;
+opacity: 0.5;
+}
+
+label{
+    cursor: pointer;
+}
+
+#banner .contenedor{
+    background-color: transparent; 
+    width: 90%;
+    height: 450px;
+    position: absolute;
+    top: 20%;
+    left: 5%;    
+    color: white;
+}
+
+#banner .contenedor-titulo{    
+    width: 100%;
+    position: absolute;
+    top: 3%;
+    margin-left: 33%;
+    color: white;
+}
+
+.contenedor{
+    width: 100%;
+    margin: auto;
+}
+
+header{
+    width: 100%;
+    height: 50px;
+    background: #2C8870;
+    color: white;
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 100;
+}
+
+
+header .contenedor{
+    display: table;
+}
+
+header label{
+    float: right;
+    font-size: 28px;
+    margin-top:1%; 
+    margin-right: 2%;
+}
+
+section{
+    width: 100%;    
+}
+
+.estilo-boton{    
+    background-color: #2C8870;
+    border-radius: 2px;
+    border-color: #2C8870; 
+    margin:15px;
+    margin-top: 0%;
+    font-size: 17px;
+    padding: 5px 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cancelar{
+    float:right;
+}
+.editar{
+    float: right; 
+    margin-right: 3px;
+}
+
+.casilla{
+    border:0px; 
+    width: 85%; 
+    margin: 10%; 
+    background-color: #E4EAE9; 
+    cursor: pointer;   
+}
+
+.contenedor-profesores{
+    float: right; 
+    background-color:#E4EAE9; 
+    width: 50%; 
+    height: 350px; 
+    margin: 20px; 
+    overflow: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.contenedor-datos{
+    float:left; 
+    background-color:#E4EAE9; 
+    width: 40%; 
+    height: 350px; 
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+h2{
+    float: left;
+    margin-left: 1%;
+    margin-top: 1%;
+    color:white;
+    
+}
+h3{
+       
+    margin-left: 7%;
+}
+
+
+i{
+    font-size: 100px;
+    margin-left: 38%;
+    cursor: pointer;
+    font-size: 20px; 
+    margin-right: 20px; 
+    color: #2C8870; 
+    float:right;
+}
+
+table, th, td {
+    border: 1px transparent;
+    border-collapse: collapse;
+    width:100%;
+}
+
+th, td {
+    float:left; 
+    color: #2C8870;
+    padding: 5px;
+    text-align: left;
+}
+
+.modal-header{
+    background-color: #2C8870;
+}
+

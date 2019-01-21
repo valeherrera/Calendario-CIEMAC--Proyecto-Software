@@ -1,0 +1,198 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+  crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body style="background-color: #2C8870;">
+
+  <header>
+    <div class="contenedor">
+      <h2><a>Calendario Matemático CIEMAC</a></h2>
+      <label class="fas fa-sign-out-alt" style="cursor: pointer" (click)="Salir()"></label>
+      <img src="{{fotoUsuario}}" style="width:2.5%; margin-top: 0.8%; margin-left: 57%;" class="w3-circle">
+      <label class="fas fa-info" routerLink='/Informacion' style="cursor: pointer"></label>
+    </div>
+  </header>
+
+  <main>
+    <section id="banner">
+      <div class="contenedor">
+        <div>
+          <br><br>
+          <div>
+            <br>
+            <h3>{{nombreCurso}} : {{tema}}</h3>
+            <br><br>
+            <button type="button" class="btn btn-danger btn-circle btn-xl" data-toggle="modal" data-target="#modalAgregar"><i
+                class="fas fa-plus"></i></button>
+            <br><br>
+            <h3>Ejercicios</h3>
+          </div>
+          <br><br><br><br>
+
+          <!--Mostrar la información de los ejercicios-->
+          <div class="album py-5 bg-light" style="width: 500px;">
+            <div class="container">
+              <div class="row">
+                <div *ngFor="let ejercicio of listaEjercicios; let indice=index" class="col-md-4">
+                  <br><br>
+                  <div class="card mb-4 box-shadow contenedor-ejercicios">
+                    <br>
+                    <p> {{indice +1}} : {{ejercicio.nombre}}</p>
+                    <br><br>
+                    <div style="float: left; width: 55%; height: 50%; ">
+                      <div class="contenedor-imagen">
+                        <img src="{{ejercicio.planteamiento}}" data-holder-rendered="true">
+                      </div>
+                    </div>
+                    <div style="float: right;width: 40%; height: 23%;">
+                      <div class="contenedor-imagen">
+                        <img src="{{ejercicio.problema}}" data-holder-rendered="true">
+                      </div>
+                      <div class="contenedor-imagen">
+                        <img src="{{ejercicio.solucion}}" data-holder-rendered="true">
+                      </div>
+                    </div>
+                    <div style="margin-top: 60%;">
+                      <p>Fecha del ejericio: {{ejercicio.fecha}}</p>
+                      <i class="fas fa-pencil-alt iconos" (click)="InformacionEjercicio(ejercicio.fecha, indice, ejercicio.nombre, ejercicio.planteamiento, ejercicio.problema, ejercicio.solucion)"
+                        data-toggle="modal" data-target="#modalEditar"></i>
+                      <i class="far fa-trash-alt iconos" (click)="GuardarInformacion(indice)" data-toggle="modal"
+                        data-target="#modalEliminar"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modificar información de un ejercicio-->
+          <div class="container">
+            <div class="modal fade" id="modalEditar" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Editar información:</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Nombre: {{nombreEjercicio}}</p>
+                    <br>
+                    <input type="text" placeholder="Ingrese el nuevo nombre" class="form-control casillaDatos"
+                      [(ngModel)]="idNombreEjercicioNueva">
+                    <br>
+                    <p>Fecha del ejercicio: {{fechaEjercicioActual}}</p>
+                    <br>
+                    <input id="fechaEjercicio" name="fechaEjercicio" [(ngModel)]="fechaEjercicioNueva" type="date"
+                      class="form-control casillaDatos">
+                    <p>Imagen Planteamiento </p>
+                    <br>
+                    <i class="fas fa-upload iconos" style="float: right; margin-right:8%;"></i>
+                    <input type="file" accept=".png, .jpg" (change)="subirImagenPlanteamiento($event)" class="casillaDatos">
+                    <p>{{nombreImagenPlanteamiento}}</p>
+                    <input #urlImagenPlNueva type="hidden" [value]="urlImagenPlanteamiento | async">
+                    <br><br>
+                    <p>Imagen Problema</p>
+                    <br>
+                    <i class="fas fa-upload iconos" style="float: right; margin-right:8%;"></i>
+                    <input type="file" type="file" accept=".png, .jpg" (change)="subirImagenProblema($event)" class="casillaDatos">
+                    <p>{{nombreImagenProblema}}</p>
+                    <input #urlImagenPrNueva type="hidden" [value]="urlImagenProblema | async">
+                    <br><br>
+                    <p>Imagen Solución</p>
+                    <br>
+                    <i class="fas fa-upload iconos" style="float: right; margin-right:8%;"></i>
+                    <input type="file" accept=".png, .jpg" (change)="subirImagenSolucion($event)" class="casillaDatos">
+                    <br>
+                    <p>{{nombreImagenSolucion}}</p>
+                    <input #urlImagenSNueva type="hidden" [value]="urlImagenSolucion | async">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" (click)="EditarInformacion(fechaEjercicioNueva,idNombreEjercicioNueva)"
+                      data-dismiss="modal" class="btn estilo-boton">Editar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agregar un ejercicio -->
+          <div class="container">
+            <div class="modal fade" id="modalAgregar" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Agregar ejercicio:</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div *ngIf="advertencia">
+                      <p><b><u>Debe rellenar todos los campos para agregar el ejercicio</u></b></p>
+                      <br><br>
+                    </div>
+                    <p>Nombre: </p>
+                    <br><br>
+                    <input type="text" placeholder="Ingrese el nombre" class="form-control casillaDatos" [(ngModel)]="idNombreEjercicio">
+                    <br>
+                    <p>Fecha del ejercicio: </p>
+                    <br>
+                    <input id="fechaEjercicio" name="fechaEjercicio" [(ngModel)]="fechaEjercicio" type="date" class="form-control casillaDatos">
+                    <br><br>
+                    <p>Imagen Planteamiento </p>
+                    <br>
+                    <i class="fas fa-upload iconos" style="float: right; margin-right:8%;"></i>
+                    <input type="file" accept=".png, .jpg" (change)="subirImagenPlanteamiento($event)" class="casillaDatos">
+
+                    <p>{{nombreImagenPlanteamiento}}</p>
+                    <input #urlImagenPl type="hidden" [value]="urlImagenPlanteamiento | async">
+                    <br><br>
+                    <p>Imagen Problema</p>
+                    <br>
+                    <i class="fas fa-upload iconos" style="float: right; margin-right:8%;"></i>
+                    <input type="file" type="file" accept=".png, .jpg" (change)="subirImagenProblema($event)" class="casillaDatos">
+                    <p>{{nombreImagenProblema}}</p>
+                    <input #urlImagenPr type="hidden" [value]="urlImagenProblema | async">
+                    <br><br>
+                    <p>Imagen Solución</p>
+                    <br>
+                    <i class="fas fa-upload iconos" style="float: right; margin-right:8%;"></i>
+                    <input type="file" accept=".png, .jpg" (change)="subirImagenSolucion($event)" class="casillaDatos">
+                    <br>
+                    <p>{{nombreImagenSolucion}}</p>
+                    <input #urlImagenS type="hidden" [value]="urlImagenSolucion | async">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" (click)="AgregarEjercicio(fechaEjercicio,idNombreEjercicio)" data-dismiss="modal"
+                      class="btn estilo-boton">Agregar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Mostrar mensaje de sis está seguro eliminar el ejercicios-->
+          <div class="modal" id="modalEliminar" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Eliminar informacion</h5>
+                </div>
+                <div class="modal-body">
+                  <br>
+                  <p style="color: #2C8870;"> ¿Esta seguro que desea eliminar la información del
+                    tema?</p>
+                  <br>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="EliminarEjercicio()">Si</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+</body>

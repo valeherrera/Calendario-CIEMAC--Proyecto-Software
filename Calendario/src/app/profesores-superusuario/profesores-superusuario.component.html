@@ -1,0 +1,93 @@
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">  
+<body class="fondo">
+    <header>
+        <div class="contenedor">
+            <h2>Calendario Matemático CIEMAC</h2>
+            <label class="fas fa-sign-out-alt" (click)="Salir()"></label>
+            <img src="{{fotoUsuario}}" style="width:2.5%; margin-top: 0.8%; margin-left: 57%;" class="w3-circle" >
+            <label class="fas fa-info" routerLink='/Informacion' style="cursor: pointer"></label>
+        </div>
+    </header>
+    <main>
+        <section id="banner">
+            <img class="imagen-fondo" src="../assets/imagenes/fondo.jpg">
+            <div class="contenedor">
+                <div>
+                    <p style="margin-left: 0px; font-size: 30px;">Profesores</p>
+
+                    <!-- Agregar la información de un profesor -->
+                    <div *ngIf="visibleAgregar">
+                        <div class="contenedor-datos">
+                            <br>
+                            <h3 style="color:#2C8870;">Agregar profesor:</h3>
+                            <input type="text" placeholder="Nombre del profesor" class="form-control casilla"
+                                [(ngModel)]="nombre">
+                            <input type="email" placeholder="Correo el profesor" class="form-control casilla"
+                                [(ngModel)]="correo">
+                            <br>
+                            <button type="button" (click)="AgregarProfesor(nombre, correo)" class="btn estilo-boton cancelar">Agregar</button>
+                        </div>
+                    </div>
+
+                    <!-- Editar la información de un profesor -->
+                    <div *ngIf="visibleEditar">
+                        <div class="contenedor-datos">
+                            <br>
+                            <h3 style="color:#2C8870;">Editar información:</h3>
+                            <input type="text" placeholder="{{nombreActual}}" class="form-control casilla" [(ngModel)]="idNombreNuevo">
+                            <input type="email" placeholder={{correoActual}} class="form-control casilla" [(ngModel)]="idCorreoNuevo">
+                            <br>
+                            <button type="button" (click)="MostrarVentanaAgregar()" class="btn estilo-boton cancelar">Cancelar</button>
+                            <button type="button" (click)="ModificarProfesores(idCorreoNuevo, idNombreNuevo)" class="btn estilo-boton editar">Editar</button>
+                        </div>
+                    </div>
+
+                    <!-- Mostrar la información de los profesores que hay en el sistema -->
+                    <div class="contenedor-profesores">
+                        <br>
+                        <ul>
+                            <table *ngFor="let profe of listaProfesores">
+                                <tr>
+                                    <div>
+                                        <br>
+                                        <th>{{profe.nombre}} </th>
+                                        <i class="fas fa-pencil-alt" (click)="MostrarVentanaEditar(profe.correo, profe.nombre)"></i>
+                                        <br><br>
+                                        <th>{{profe.correo}} </th>
+                                        <i class="far fa-trash-alt" (click)="GuardarInformacion(profe.correo)" data-toggle="modal" data-target="#modalEliminar"></i>
+                                        <br><br>
+                                        <hr >
+                                    </div>
+                                </tr>
+                            </table>
+                        </ul>
+                    </div>
+
+                    <!--Modal para mostrar mensajes  GuardarInformacion(-->
+                    <div class="modal" id="modalEliminar" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Eliminar información</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <br>
+                                    <p style="color: #2C8870;"> ¿Esta seguro que desea eliminar la información del profesor?</p>
+                                    <br>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="EliminarProfesor()">Si</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+<router-outlet></router-outlet>

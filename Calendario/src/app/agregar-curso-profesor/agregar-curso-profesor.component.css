@@ -1,0 +1,179 @@
+#banner{
+    margin-top: 0px;
+}
+
+#banner img{
+margin-top: 50px;
+width: 100%;
+height: 100%;
+opacity: 0.5;
+}
+
+#banner .contenedor{
+    background-color: transparent; 
+    width: 90%;
+    height: 450px;
+    position: absolute;
+    top: 20%;
+    left: 2%;
+    
+    color: white;
+}
+
+#banner .contenedor-datos{
+    background-color:grey;
+    width: 350px;
+    height: 350px;
+    position: absolute;
+    color: white;
+    margin-left: 20px;
+}
+
+
+#banner .contenedor-titulo{
+    
+    width: 100%;
+    position: absolute;
+    top: 2%;
+    margin-left: 33%;
+    color: white;
+}
+
+
+.contenedor{
+    width: 100%;
+    margin: auto;
+}
+
+header{
+    width: 100%;
+    height: 50px;
+    background: #2C8870;
+    color: white;
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 100;
+}
+
+
+header .contenedor{
+    display: table;
+}
+
+header label{
+    float: right;
+    font-size: 28px;
+    margin-top:1%; 
+    margin-right: 2%;
+}
+
+section{
+    width: 100%;    
+}
+
+.estilo-boton{    
+    background-color: #2C8870;
+    border-radius: 0px;
+    border-color: #2C8870; 
+    margin:15px;
+    margin-top: 0%;
+    font-size: 17px;
+    padding: 5px 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+.casilla{
+    border:0px; 
+    width: 85%; 
+    margin: 4%; 
+    background-color: #E4EAE9; 
+    cursor: pointer;
+    
+
+}
+
+
+p{
+    float: left;
+    margin-left: 6%;
+    margin-top: 1%;
+    color:#2C8870;
+}
+.color{
+    margin-left: 33px;;
+    color:#2C8870;
+}
+
+.contenedor-imagen{
+    width: 70px;
+    height: 70px;
+    background-color: purple;
+    
+}
+h5{
+    color:#2C8870;
+}
+
+h2{
+    float: left;
+    margin-left: 1%;
+    margin-top: 1%;
+    color:white;
+    
+}
+h3{
+    margin-top: 2%;
+    float:left; 
+    color: #2C8870; 
+    margin-left: 5%;
+}
+
+a{
+
+    color:white;
+}
+
+i{
+    font-size: 100px;
+    margin-left: 38%;
+    cursor: pointer;
+    font-size: 20px; 
+    margin-right: 20px; 
+    color:  #2C8870; 
+    float:right;
+    
+}
+
+table, th, td {
+    border: 1px transparent;
+    border-collapse: collapse;
+    
+  }
+  th, td {
+    padding: 5px;
+    text-align: left;
+    float:left; 
+    color: #2C8870;
+  }
+  
+.contendor-informacion{
+    float:left; 
+    background-color:#E4EAE9; 
+    width: 45%; 
+    height: 400px; 
+    margin-left: 7%;    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.contenedor-cursos{
+    float: right; 
+    background-color:#E4EAE9; 
+    width: 45%; 
+    height: 400px;  
+    overflow: auto; 
+    margin-left: 2%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.modal-header{
+    background-color: #2C8870;
+}

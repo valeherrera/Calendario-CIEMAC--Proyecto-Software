@@ -1,0 +1,149 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">    
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<body style="background-color: #2C8870;" onLoad="window.resizeTo(1366,768)">
+    <header>
+        <div class="contenedor">
+            <h2><a>Calendario Matemático CIEMAC</a></h2>
+            <label class="fas fa-sign-out-alt" style="cursor: pointer" (click)="Salir()"></label>
+            <img src="{{fotoUsuario}}" style="width:2.5%; margin-top: 0.8%; margin-left: 55%;" class="w3-circle" >
+            <label class="fas fa-info" routerLink='/Informacion' style="cursor: pointer"></label>
+        </div>
+    </header>
+    <main>
+        <section id="banner">
+            <img class="imagen-fondo" src="../assets/imagenes/fondo.jpg">
+            <div class="contenedor">
+                <div>
+                    <h2 style="margin-left: 7%; float: left;">Cursos</h2>
+                    <br><br><br><br>
+                    
+                    <!-- Agregar la información de un curso-->
+                    <div *ngIf="visibleAgregar">
+                        <div class="contendor-informacion">
+                            <br>
+                            <h3>Agregar Curso </h3>
+                            <br><br><br>
+                            <p><b>Código del curso:</b> {{idCodigo}} </p>
+                            <br><br>
+                            <p><b>Nombre del curso:</b> {{idNombre}} </p>
+                            <br>
+                            <input type="number" min="1" max="3" placeholder="Período:" class="form-control casilla"
+                                [(ngModel)]="idPeriodo">
+                            <input type="number" min="2018" max="2019" placeholder="Año:" class="form-control casilla"
+                                [(ngModel)]="idAnno">
+                            <br>
+                            <h5><input type="checkbox" [(ngModel)]="ChkRestaurar" name="checRestaurar" value="Restauran información "
+                                    class="color"> Restaurar datos</h5>
+                            <button type="button" (click)="AgregarCurso(idCodigo, idNombre, idPeriodo, idAnno, ChkRestaurar)"
+                                class="btn estilo-boton" style="float:right; margin-top: 1%;">Agregar</button>
+                            <button type="button" (click)="MostrarVentanaDisponibles()" class="btn estilo-boton" style="float: right; margin-right: 3px; margin-top: 1%;">Volver</button>
+                        </div>
+                    </div>
+
+                    <!-- Mostrar los cursos disponibles que el usuario aún no ha agregado a su lista -->
+                    <div *ngIf="visibleDisponibles">
+                        <div class="contendor-informacion">
+                            <br>
+                            <h3>Cursos disponibles: </h3>
+                            <div style="width: 100%; height: 70%; overflow: auto;">
+                                <ul>
+                                    <table style="width:100%" *ngFor="let curso of listaCursosDisponibles">
+                                        <tr>
+                                            <div>
+                                                <br><br>
+                                                <th style="float:left; color: #2C8870;">Código: {{curso.codigo}} </th>
+                                                <br><br>
+                                                <th style="float:left; color: #2C8870;">Nombre:{{curso.nombre}} </th>
+                                                <br><br>
+                                                <i class="fas fa-plus" (click)="ElegirCurso(curso.codigo, curso.nombre, curso.periodo, curso.anno)"></i>
+                                                <th style="float:left; color: #2C8870;">Período: {{curso.periodo}} </th>
+                                                <br><br>
+                                                <th style="float:left; color: #2C8870;">Año: {{curso.anno}} </th>
+                                                <hr style="color:#2C8870;">
+                                            </div>
+                                        </tr>
+                                    </table>
+                                </ul>
+                            </div>
+                            <button type="button" (click)="MostrarVentanaAgregar()" class="btn estilo-boton" style="float:right; margin-top: 0.5%;">Cancelar</button>
+                        </div>
+                    </div>
+
+                    <!-- Modificar la información de un curso -->
+                    <div *ngIf="visibleModificar">
+                        <div class="contendor-informacion">
+                            <br>
+                            <h3>Editar Curso: </h3>
+                            <br><br><br>
+                            <p><b>Código del curso:</b> {{codigoCursoModificar}} </p>
+                            <br><br>
+                            <p><b>Nombre del curso:</b> {{nombreCursoModificar}} </p>
+                            <br><br>
+                            <input type="number" min="1" max="3" placeholder="Período:" class="form-control"
+                                [(ngModel)]="idPeriodo" style="border:0px; width: 85%; margin: 4%; background-color: #E4EAE9; cursor: pointer;">
+                            <input type="number" min="2018" max="2019" placeholder="Año:" class="form-control"
+                                [(ngModel)]="idAnno" style="border:0px; width: 85%; margin: 4%; background-color: #E4EAE9; cursor: pointer;">
+                            <br>
+                            <button type="button" (click)="MostrarVentanaAgregar()" class="btn estilo-boton" style="float:right; margin-top: 7%;">Cancelar</button>
+                            <button type="button" (click)=" ModificarInformacionCurso(idPeriodo, idAnno)" class="btn estilo-boton"
+                                style="float: right; margin-right: 3px; margin-top: 7%;">Editar</button>
+                        </div>
+                    </div>
+
+                    <!-- Mostrar la información de los cursos que ya tiene agregados -->
+                    <div class="contenedor-cursos">
+                        <br>
+                        <ul>
+                            <table style="width:100%" *ngFor="let curso of listaCursos">
+                                <tr>
+                                    <div>
+                                        <br>
+                                        <th>Código: {{curso.codigo}} </th>
+                                        <br><br>
+                                        <th style="cursor:pointer" (click)="DatosBusqueda(curso.codigo, curso.periodo, curso.anno, curso.nombre)">Nombre:
+                                            {{curso.nombre}} </th>
+                                        <br>
+                                        <i class="far fa-trash-alt" (click)="GuardarInformacion(curso.codigo, curso.periodo, curso.anno)" data-toggle="modal" data-target="#modalEliminar"></i>
+                                        <br>
+                                        <th>Período: {{curso.periodo}} </th>
+                                        <br><br>
+                                        <th>Año: {{curso.anno}} </th>
+                                        <br><br>
+                                        <hr>
+                                    </div>
+                                </tr>
+                            </table>
+                        </ul>
+                    </div>
+
+                    <div class="modal" id="modalEliminar" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Eliminar informacion</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <br>
+                                    <p style="color: #2C8870;"> ¿Esta seguro que desea eliminar la información del
+                                        curso?</p>
+                                    <br>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="EliminarCurso()">Si</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
